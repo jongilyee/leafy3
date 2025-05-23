@@ -1,8 +1,8 @@
 version: '3'
 services:
   leafy-postgres:
-    
-    image: jongil/leafy-postgres:1.0.0
+    build: ./leafy-postgresql
+    image: leafy-postgres:5.0.0-compose
     volumes:
       - mydata:/var/lib/postgresql/data
     deploy:
@@ -13,8 +13,8 @@ services:
     restart: always
 
   leafy-backend:
-    
-    image: jongil/leafy-backend:1.0.0
+    build: ./leafy-backend
+    image: leafy-backend:5.0.0-compose
     environment:
       - DB_URL=leafy-postgres
     depends_on:
